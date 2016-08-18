@@ -15,9 +15,8 @@ WIN_COMBINATIONS = [
   [2,4,6],
 ]
 
-
 def won?(board)
-    WIN_COMBINATIONS.select do |win_combination|
+    WIN_COMBINATIONS.detect do |win_combination|
       win_index_1 = win_combination[0]
       win_index_2 = win_combination[1]
       win_index_3 = win_combination[2]
@@ -26,13 +25,25 @@ def won?(board)
       position_2 = board[win_index_2]
       position_3 = board[win_index_3]
 
-      if (position_1 == "X" && position_2 == "X" && position_3 == "X") || (position_1 == "O" && position_2 == "O" && position_3 == "O")
-        return win_combination
-      else
-        return false
-      end
+      (position_1 == "X" && position_2 == "X" && position_3 == "X") || (position_1 == "O" && position_2 == "O" && position_3 == "O")
+
     end
 end
 
-board = ["O", " ", " ", "O", " ", " ", "O", " ", " "]
-puts won?(board)
+def full?(board)
+  board.all? do |value|
+  value == "X" || value == "O"
+end
+end
+
+
+
+=begin
+def won?(board)
+  WIN_COMBINATIONS.detect do |combo|
+    board[combo[0]] == board[combo[1]] &&
+    board[combo[1]] == board[combo[2]] &&
+    position_taken?(board, combo[0])
+  end
+end
+=end
