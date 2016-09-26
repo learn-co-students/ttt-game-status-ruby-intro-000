@@ -15,7 +15,6 @@ WIN_COMBINATIONS = [
   [2,4,6]
 ]
 
-
  def won?(board)
    WIN_COMBINATIONS.find do |win_combination|
     win_index_0 = win_combination[0]
@@ -49,7 +48,7 @@ def draw?(board)
     return false
   elsif won?(board) == ([0,4,8] || [2,4,6])
     return false
-  elsif won?(board) && board.all? { |i| i != " " }
+  elsif board.all? { |i| i != " " }
     return true
   elsif board.any? { |i| i == " " }
     return false
