@@ -30,11 +30,7 @@ WIN_COMBINATIONS = [
 end
 
 def full?(board)
-  if board.all? { |i| i != " " }
-    return true
-  elsif board.any? { |i| i == " " }
-    return false
-  end
+  board.all? { |i| i != " " }
 end
 
 def draw?(board)
@@ -42,13 +38,7 @@ def draw?(board)
 end
 
 def over?(board)
-  if board.all? { |i| i != " " }
-    return true
-  elsif won?(board)
-    return true
-  elsif board.any? { |i| i == " " }
-    return false
-  end
+  full?(board)
 end
 
 def winner(board)
@@ -61,7 +51,7 @@ def winner(board)
      return "X"
    elsif board[win_index_0] == "O" && board[win_index_1] == "O" && board[win_index_2] == "O"
      return "O"
-   else
+   elsif !won?(board)
      return nil
    end
  end
