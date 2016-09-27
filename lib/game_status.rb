@@ -25,8 +25,6 @@ WIN_COMBINATIONS = [
       return win_combination
     elsif board[win_index_0] == "O" && board[win_index_1] == "O" && board[win_index_2] == "O"
       return win_combination
-    elsif !full?(board) && draw?(board)
-      return false
     end
   end
 end
