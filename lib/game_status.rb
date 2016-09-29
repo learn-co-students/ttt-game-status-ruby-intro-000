@@ -18,28 +18,24 @@ def won?(board)
   WIN_COMBINATIONS.each do |indices|
     result = indices.map { |i| board[i] }
     if result == ["X", "X", "X"] || result == ["O", "O", "O"]
-      # return "#{indices}, winner: #{result[0]}"
       return indices
-    # elsif result == ["O", "O", "O"]
-    #   return "indices: #{indices}, winner token: 'O'"
-    # else
     end
   end
   false
 end
 
 def full?(board)
-  puts "In full(board)"
+  !board.any? { |index| index == " " || index == "" || index == nil}
 end
 
 def draw?(board)
-  puts "In draw(board)"
+  !won?(board) && full?(board)
 end
 
 def over?(board)
-  puts "In over(board)"
+  draw?(board) || won?(board) || full?(board)
 end
 
 def winner(board)
-  puts "In winner(board)"
+  won?(board) ? board[won?(board)[0]] : nil
 end
