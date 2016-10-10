@@ -1,4 +1,5 @@
 require_relative '../lib/game_status.rb'
+require 'pry'
 
 describe "./lib/game_status.rb" do
   describe 'WIN_COMBINATIONS' do
@@ -153,7 +154,6 @@ describe "./lib/game_status.rb" do
 
     it 'returns nil when no winner' do
       board = ["X", "O", " ", " ", " ", " ", " ", "O", "X"]
-
       expect(winner(board)).to be_nil
     end
   end
