@@ -4,10 +4,6 @@ def position_taken?(board, index)
 end
 
 
-#0 1 2
-#3 4 5
-#6 7 8
-# Define your WIN_COMBINATIONS constant
 WIN_COMBINATIONS = [
   [0, 1, 2], #top row
   [3, 4, 5], #second row
