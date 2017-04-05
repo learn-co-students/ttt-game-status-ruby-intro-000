@@ -51,16 +51,7 @@ def over?(board)
 end
 
 def winner(board)
-  win = won?(board)
-  win.each do |i|
-    if board[i] == "X"
-      return "X"
-    elsif board[i] == "O"
-      return "O"
-    else
-      false
-    end
-    return nil
-  end
-  return nil
-end
+   if won?(board)
+     board[won?(board)[0]]
+   end
+ end
