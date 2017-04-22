@@ -17,10 +17,8 @@ WIN_COMBINATIONS = [
 
 #determine if a winning combination is currently represented by one player on the board
 def won?(board)
-  winner = "no one"
 	WIN_COMBINATIONS.each do |combo_array|
   		if board[combo_array[0]] == "X" && board[combo_array[1]] == "X" && board[combo_array[2]] == "X" || board[combo_array[0]] == "O" && board[combo_array[1]] == "O" && board[combo_array[2]] == "O"
-          winner = "X"
           return combo_array
     	end
 	end
