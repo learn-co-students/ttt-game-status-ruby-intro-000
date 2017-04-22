@@ -24,6 +24,7 @@ def won?(board)
           return combo_array
     	end
 	end
+  #return false for a completely empty board
   board.all? do |val|
     if val != "X"  || val != "O"
       return false
