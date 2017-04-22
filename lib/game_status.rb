@@ -15,6 +15,7 @@ WIN_COMBINATIONS = [
   [2,4,6],
 ]
 
+#determine if a winning combination is currently represented by one player on the board
 def won?(board)
   winner = "no one"
 	WIN_COMBINATIONS.each do |combo_array|
@@ -30,7 +31,7 @@ def won?(board)
   end
 end
 
-
+#check if all spots on the board are filled with a player character
 def full?(board)
   full_board = board.all? do |value|
     value == "X" || value == "O"
@@ -38,22 +39,29 @@ def full?(board)
   full_board
 end
 
+#determine if the full board is a draw or a win
 def draw?(board)
   if won?(board) == false && full?(board) == true
+    #a draw returns true
     return true
   end
 end
 
+#determine if the game is over.  a win, draw, and full board return true
 def over?(board)
   if won?(board) == true || draw?(board) == true || full?(board) == true
     return true
   end
 end
 
+#determine who the winner is
 def winner(board)
+  #grab the result of the won? method (should be true or false)
   if won?(board)
-    formation_array = won?(board)
-        board[formation_array[0]]
+    #if there is a win, grab the returned winning combination array
+    winning_combination = won?(board)
+    #check the first index in the winning combination against the matching board array index
+            board[winning_combination[0]]
       else
         nil
   end
