@@ -19,15 +19,11 @@ WIN_COMBINATIONS = [
 def won?(board)
 	WIN_COMBINATIONS.each do |combo_array|
   		if board[combo_array[0]] == "X" && board[combo_array[1]] == "X" && board[combo_array[2]] == "X" || board[combo_array[0]] == "O" && board[combo_array[1]] == "O" && board[combo_array[2]] == "O"
-          return combo_array
-    	end
+          	return combo_array
+    		end
 	end
-  #return false for a completely empty board
-  board.all? do |val|
-    if val != "X"  || val != "O"
-      return false
-    end
-  end
+  #return false for no wins
+	return false
 end
 
 #check if all spots on the board are filled with a player character
