@@ -36,17 +36,12 @@ end
 
 #determine if the full board is a draw or a win
 def draw?(board)
-  if won?(board) == false && full?(board) == true
-    #a draw returns true
-    return true
-  end
+  !won?(board) && full?(board)
 end
 
 #determine if the game is over.  a win, draw, and full board return true
 def over?(board)
-  if won?(board) == true || draw?(board) == true || full?(board) == true
-    return true
-  end
+  won?(board) == true || draw?(board) || full?(board)
 end
 
 #determine who the winner is
