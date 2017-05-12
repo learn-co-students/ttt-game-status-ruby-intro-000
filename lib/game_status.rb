@@ -36,11 +36,13 @@ def over?(board)
 end
 
 def winner(board)
-   if  board[win_comb] =="X"
-     return "X"
-   elsif won?(board) =="O"
-     return "O"
-  else
-    return nil
+if won?(board)
+ index = won?(board)
+  if board[index[2]]  == "X"
+      board[index[2]]
+  elsif board[index[0]]  == "O"
+     board[index[0]]
    end
+  else nil
+ end
 end
