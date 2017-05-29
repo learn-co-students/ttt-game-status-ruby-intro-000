@@ -44,9 +44,6 @@ def won?(board)
   false
 end
 
-def draw?(board)
-end
-
 def full?(board)
   empty = board.all? { |i| i == " " }
   any = board.any? { |i| i == " " }
