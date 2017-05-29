@@ -86,10 +86,3 @@ def winner(board)
     return board[winner_board[0]]
   end
 end
-
-board = ["X", " ", "X", " ", "X", " ", "O", "O", " "]
-win_board = ["X", "O", "X", "O", "X", "O", "O", "O", "X"]
-draw_board = ["X", "O", "X", "O", "X", "X", "O", "X", "O"]
-no_winner_board = ["X", "O", " ", " ", " ", " ", " ", "O", "X"]
-
-puts winner(no_winner_board)
