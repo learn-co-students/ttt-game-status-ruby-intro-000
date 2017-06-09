@@ -46,10 +46,17 @@ b = won?(board)
   end
 
 def over?(board)
-  a = full?(board)
-  b = draw?(board)
-  c = won?(board)
-return true if [a, b, c].any?{|i| i = true}
-else
-  false
+
+  if draw?(board) == true || won?(board).is_a?(Array) == true
+     true
+  else
+    false
+end
+end
+
+def winner(board)
+  if won?(board) == false
+    nil
+  else board[won?(board)[0]]
+end
 end
