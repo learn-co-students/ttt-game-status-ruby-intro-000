@@ -48,8 +48,10 @@ def over?(board)
 end
 
 def winner(board)
-if  "X" == won?(board) || over?(board)
-  return "X"
-else
-end
+  if won?(board) != nil
+ winning_board = won?(board)
+ return board[winning_board[0]]
+  else
+ nil
+ end
 end
