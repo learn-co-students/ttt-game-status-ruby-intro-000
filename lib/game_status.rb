@@ -24,7 +24,7 @@ end
 
 def full?(board)
   board.none? do |spot|
-    spot == " " || spot == "  "
+    spot.nil? || spot == " "
   end
 end
 
