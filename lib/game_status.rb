@@ -15,17 +15,20 @@ WIN_COMBINATIONS = [
   [2, 4, 6]
 ]
 
+#def won?(board)
+#  WIN_COMBINATIONS.detect do |combo|
+#    board[combo[0]] == board[combo[1]] &&
+#    board[combo[1]] == board[combo[2]] &&
+#    position_taken?(board, combo[0])
+#  end
+#end
+#
+#def full?(board)
+#  board.all?{|token| token == "X" || token == "O"}
+#end
+
 def won?(board)
   WIN_COMBINATIONS.select do |row|
-    # puts "#{row}"
-    # puts row.eql?(["O","O","O"])
-    # row.select do |element|
-      # puts "#{board[element].eql?("X")}"
-    # end
-    # puts "#{row}"
-    # puts "#{row[0]} and #{row[1]} and #{row[2]}"
-    # puts "#{row[0]}"
-    # puts "#{position_taken?(board, row[0]) && board[row[0]] == board[row[1]] && board[row[1]] == board[row[2]]}"
     if position_taken?(board, row[0]) && board[row[0]] == board[row[1]] && board[row[1]] == board[row[2]]
       puts "WINNER"
       return row
@@ -46,17 +49,11 @@ true
 end
 
 def draw?(board)
-  if !won?(board).is_a?(Array) && full?(board)
-    return true
-  end
-false
+  !won?(board) && full?(board)
 end
 
 def over?(board)
-  if draw?(board) || won?(board) || full?(board)
-    return true
-  end
-false
+  won?(board) || full?(board)
 end
 
 def winner(board)
