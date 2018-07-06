@@ -44,10 +44,11 @@ def over?(board)
 end 
 
 def winner(board)
-  if winner = won?(board)
-    if board[winner[0]] == "X"
+  winning_array = won?(board)
+  if won?(board)
+    if board[winning_array[0]] == "X"
       return "X"
-    elsif board[winner[0]] == "O"
+    elsif board[winning_array[0]] == "O"
       return "O"
     end 
   else 
