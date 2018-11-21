@@ -26,9 +26,6 @@ WIN_COMBINATIONS =[
 #return the winning combination indexes as an array if there is a win.
 
 def won?(board)
-
-
-
   WIN_COMBINATIONS.each do |w_combinations|
     w_combinations.each do |win_index|
       win_index_1 = w_combinations[0]
@@ -41,13 +38,10 @@ def won?(board)
 
       if (position_1 == "X" && position_2 == "X" && position_3 == "X") || (position_1 == "O" && position_2 == "O" && position_3 == "O")
         return w_combinations
-      elsif board.all? {|ele| ele == " " || ele == ""}
-        false
-      else
-        false
       end
     end
     end
+    return false
 end
 
 
@@ -56,11 +50,20 @@ def full?(board)
 end
 
 def draw?(board)
-  if !won(board) && !(board.all? {|i| i == "X" || i == "O"})
-    true
-  elsif !won(board) && board.any? {|i| i == " " || i == ""}
-    false
+  !won?(board) && full?(board)
+end
+
+def over?(board)
+  won?(board) || draw?(board)
+end
+
+def winner(board)
+  won?(board)
+  if position_1 == "X"
+    "X"
+  elsif position_1 == "O"
+    "O"
   else
-    false
-  end
+    nil
+  end 
 end
