@@ -18,3 +18,49 @@ WIN_COMBINATIONS =[
   [1,4,7],
   [2,5,8],
 ]
+
+#build a method that can check a tic tac toe board
+#and return true if there is a win and false if not.
+#method should accept a board as an argument and return false/nil if
+#there is no win combination present in the board
+#return the winning combination indexes as an array if there is a win.
+
+def won?(board)
+
+
+
+  WIN_COMBINATIONS.each do |w_combinations|
+    w_combinations.each do |win_index|
+      win_index_1 = w_combinations[0]
+      win_index_2 = w_combinations[1]
+      win_index_3 = w_combinations[2]
+
+      position_1 = board[win_index_1]
+      position_2 = board[win_index_2]
+      position_3 = board[win_index_3]
+
+      if (position_1 == "X" && position_2 == "X" && position_3 == "X") || (position_1 == "O" && position_2 == "O" && position_3 == "O")
+        return w_combinations
+      elsif board.all? {|ele| ele == " " || ele == ""}
+        false
+      else
+        false
+      end
+    end
+    end
+end
+
+
+def full?(board)
+  board.all? {|ele| ele == "X" || ele == "O"}
+end
+
+def draw?(board)
+  if !won(board) && !(board.all? {|i| i == "X" || i == "O"})
+    true
+  elsif !won(board) && board.any? {|i| i == " " || i == ""}
+    false
+  else
+    false
+  end
+end
