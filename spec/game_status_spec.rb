@@ -16,6 +16,26 @@ describe "./lib/game_status.rb" do
     end
   end
 
+  describe "meets_win_combination?" do
+    it 'returns falsey for an empty board' do
+      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+      win_combination = [0,1,2]
+      expect(meets_win_combination?(board,win_combination)).to be_falsey
+    end
+
+    it 'returns falsey if there is not a win' do
+      board = ["X", "X", "O", " ", " ", " ", " ", " ", " "]
+      win_combination = [0,1,2]
+      expect(meets_win_combination?(board,win_combination)).to be_falsey
+    end
+
+    it 'returns an array of matching indexes for win' do
+      board = ["X", "X", "X", "O", "O", " ", " ", " ", " "]
+      win_combination=[0,1,2]
+      expect(meets_win_combination?(board,win_combination)).to match_array([0,1,2])
+    end
+  end
+
   describe "#won?" do
     it 'returns falsey for an empty board' do
       board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
@@ -91,6 +111,40 @@ describe "./lib/game_status.rb" do
       expect(full?(board)).to be_falsey
     end
   end
+
+  describe "possible_win_combination?" do
+    it 'returns truthy for an empty board' do
+      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+      win_combination = [0,1,2]
+      expect(possible_win_combination?(board,win_combination)).to be_truthy
+    end
+
+    it 'returns falsey if win combination full' do
+      board = ["X", "X", "O", " ", " ", " ", " ", " ", " "]
+      win_combination = [0,1,2]
+      expect(possible_win_combination?(board,win_combination)).to be_falsey
+    end
+
+    it 'returns truthy if win combination possible single space empty' do
+      board = [" ", " ", " ", "X", "X", "O", "X", "X", "O"]
+      win_combination = [0,1,2]
+      expect(possible_win_combination?(board,win_combination)).to be_truthy
+    end
+
+    it 'returns truthy if win combination possible triple space empty' do
+      board = ["   ", "   ", "   ", "X", "X", "O", "X", "X", "O"]
+      win_combination = [0,1,2]
+      expect(possible_win_combination?(board,win_combination)).to be_truthy
+    end
+
+
+    it 'returns truthy if win combination possible nil empty' do
+      board = [nil, nil, nil, "X", "X", "O", "X", "X", "O"]
+      win_combination = [0,1,2]
+      expect(possible_win_combination?(board,win_combination)).to be_truthy
+    end
+  end
+
 
   describe '#draw?' do
     it 'returns true for a draw' do
