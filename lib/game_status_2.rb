@@ -1,6 +1,4 @@
-# Helper Method
-
-board = ["X"," "," "," ","O"," ", " ", " ", " "]
+board = ["X","O","O","X","O","X","X","X","O"]
 
 
 def position_taken?(board, index)
@@ -19,12 +17,8 @@ WIN_COMBINATIONS = [
   [2,4,6]
 
 ]
-#def get_match(board,index_list,symbol)
-#  index_list.select {|i| i }
 
-#  end
-#end
-
+WC = [3,4,5]
 
 def won?(board)
 
@@ -32,46 +26,52 @@ def won?(board)
       return false
     end
 
-
-
-  WIN_COMBINATIONS.each do |win_com|
-
-
-    if win_com.all?{|i| board[i] == "X"} || win.com?{|i| board[i] == "O"}
-      print win_com
+    WIN_COMBINATIONS.each do |w|
+    if w.all?{|i| board[i] == "X"} || w.all?{|i| board[i] == "O"}
+        print w
+        return w
     else
-      print "sth else"
-
-
+       next
     end
- end
+  end
+
+  return false
 end
 
+won?(board)
 
 def full?(board)
   if board.any?{|i| i == " "}
-    print false
     return false
   else
-    print true
     return true
   end
 end
 
 def draw?(board)
   if won?(board) && (full?(board) ||  !full?(board))
-    return true
-  elsif won?(board)
     return false
+  elsif !won?(board)
+    return true
   end
 end
 
 def over?(board)
-  if draw?(board) || full?(board) || won?(board)
+  if draw?(board) || won?(board) || full?(board)
     return true
   else
     return false
   end
 end
 
-won?(board)
+def winner(board)
+  if won?(board).any?{|i| board[i] == "X"}
+    return "X"
+
+  elsif won?(board).any?{|i| board[i] == "O"}
+    return "O"
+
+else
+  return false
+  end
+end
