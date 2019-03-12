@@ -1,6 +1,0 @@
-#!/usr/bin/env ruby
-require_relative '../lib/game_status.rb'
-
-board = ["X", "O", " ", " ", " ", " ", " ", "O", "X"]
-
-puts winner(board)
