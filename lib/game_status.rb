@@ -54,5 +54,4 @@ end
 def winner(board)
   winningcombo = won?(board)
   board[winningcombo[0]]
-binding.pry
 end
