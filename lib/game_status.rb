@@ -46,7 +46,7 @@ def winner(board)
   sub_array = []
     if (won?(board))
       sub_array = won?(board)
-      if (sub_array[0] == "X" )
+      if (board[sub_array[0]] == "X")
         return "X"
       else
         return "O"
