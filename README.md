@@ -229,6 +229,7 @@ over?(inprogress_board) #=> false
 The `#winner` method should accept a board and return the token, "X" or "O" that
 has won the game given a winning board.
 
+
 The `#winner` method can be greatly simplified by using the methods and their
 return values you defined above.
 
