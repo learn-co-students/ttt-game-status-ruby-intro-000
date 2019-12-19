@@ -18,8 +18,9 @@ WIN_COMBINATIONS = [
 
 def won?(board)
   WIN_COMBINATIONS.detect do |index|
-    board[index[0]] == "X" && board[index[1]] == "X" && board[index[2]] == "X" ||
-    board[index[0]] == "O" && board[index[1]] == "O" && board[index[2]] == "O"
+    board[index[0]] == board[index[1]] &&
+    board[index[1]] == board[index[2]] &&
+    position_taken?(board, index[0])
   end
 end
 
@@ -28,19 +29,15 @@ def full?(board)
 end
 
 def draw?(board)
-  full?(board) && won?(board) == nil
+  full?(board) && !won?(board)
 end
 
 def over?(board)
-  won?(board) != nil || draw?(board)
+  won?(board) || draw?(board)
 end
 
 def winner(board)
-  if won?(board) != nil && won?(board).any?{|index| board[index] == "X"}
-    "X"
-  elsif won?(board) != nil && won?(board).any?{|index| board[index] == "O"}
-    "O"
-  else
-    nil
+  if winner = won?(board)
+    board[winner.first]
   end
 end
