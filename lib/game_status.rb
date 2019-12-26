@@ -41,3 +41,20 @@ def won?(board)
     end
   end
 end
+
+
+def full?(board)
+  if won?(board)==false
+    count=0
+    board.each do |position|
+      if position=="X" || position=="O"
+        count+=1
+      end
+    end
+    if count==board.length()
+      return true
+    else
+      return false
+    end
+  end
+end
