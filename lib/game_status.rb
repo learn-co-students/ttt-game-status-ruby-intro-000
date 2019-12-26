@@ -20,7 +20,7 @@ def won?(board)
       else
         count=0
         board.each do |position|
-          if position==" "
+          if position=="X" || position=="O"
             count+=1
           end
         end
@@ -30,6 +30,14 @@ def won?(board)
       end
     end
   else
-    return false
+    count=0
+    board.each do |position|
+      if position==" " || position==" "
+        count+=1
+      end
+    end
+    if count==board.length()
+      return false
+    end
   end
 end
