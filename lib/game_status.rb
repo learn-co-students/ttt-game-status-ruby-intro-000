@@ -24,9 +24,7 @@ def won?(board)
 end
 
 def full?(board)
-  puts "board.any? {|val| (val == '' || val == ' ')} --- #{board.any? { |val| (val == '' || val == ' ') }}"
-  puts
-
+  return false if (board.any? { |val| (val == '' || val == ' ') })
   return true if draw?(board)
 
   false
@@ -45,23 +43,12 @@ def draw?(board)
 end
 
 def over?(board)
-  puts "board.any? {|val| val == ''} --- #{board.any? { |val| val == '' }}"
-  puts
-
-  return true if won?(board)
-  return true if draw?(board)
-  return true if board.any? { |val| val == '' }
-
-  false
+    won?(board) || full?(board)
 end
 
 def winner(board)
   winning_combination = won?(board)
-
-  puts winning_combination.inspect
-
   return nil if winning_combination.class == false.class
-
   board[winning_combination[0]]
 end
 
