@@ -40,7 +40,10 @@ def draw?(board)
   if won?(board)
     return false
   end
-  true
+  if full?(board)
+    return true
+  end
+  false
 end
 
 def over?(board)
@@ -50,12 +53,12 @@ def over?(board)
   if draw?(board)
     return true
   end
-  false #otherwise false--what's interfering here?
+  false
 end
 
 def winner(board)
-  if won?(board)
-    array = won?(board)
+  array = won?(board)
+  if array
     return board[array[0]]
   end
 end
