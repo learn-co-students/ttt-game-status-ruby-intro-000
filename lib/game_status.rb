@@ -47,7 +47,7 @@ def over?(board)
   if won?(board)
     return true
   end
-  if full?(board)
+  if draw?(board)
     return true
   end
   false #otherwise false--what's interfering here?
