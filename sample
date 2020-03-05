@@ -1,0 +1,34 @@
+
+
+def full?(board)
+  board_full = true
+  board.each do |item|
+    index = board.index(item)
+    if position_taken?(board, index) == false
+      board_full = false
+    end
+  end
+  return board_full
+end
+
+
+def draw?(board)
+  if full?(board) == true && won?(board) == false
+    return true
+  elsif full?(board) == false && won?(board) == false
+    return false
+  elsif won?(board) != false
+    return false
+  end
+end
+
+
+def over?(board)
+  if draw?(board) == true
+    return true
+  elsif won?(board) != false && full?(board) == true
+    return true
+  elsif won?(board) != false && full?(board) == false
+    return true
+  else return false
+end
