@@ -39,8 +39,8 @@ end
 
 def winner(board)
   won?(board) ? board[won?(board)[0]] : nil
+end
 #   if won?(board)
 #   winning_array = won?(board)
 #   board[winning_array[0]]
 # end
-end
