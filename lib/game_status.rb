@@ -16,14 +16,51 @@ WIN_COMBINATIONS = [
 
 ]
 
-won?(board)
-WIN_COMBINATIONS.each |array|
-board.select "X"
-board.select "O"
-if board.select "X" == array || board.select "O" == array
-  array
-else
-falsey
+def won?(board)
+ x_array = []
+ o_array= []
+
+board.each_with_index do |n, index|
+  if n == "X"
+    x_array.push(index)
+  else if
+    n == "O"
+    o_array.push(index)
+  else
+nil
+  end
+end
+  WIN_COMBINATIONS.each do |win|
+  if x_array == win || o_array == win
+
+   return win
+
+  else
+    false
+  end
 end
 end
 end
+
+def draw?(board)
+  if won?(board) == true
+    return false
+  elsif won?(board) == false && turn_count(board) == 9
+    return true
+  else
+    return false
+  end
+
+  def turn_count(board)
+turns = 0
+board.each do |space|
+
+  if space == "X" || space == "O"
+    turns +=1
+
+  end
+
+end
+return turns
+end
+    end
