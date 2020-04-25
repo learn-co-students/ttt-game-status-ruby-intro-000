@@ -37,7 +37,7 @@ WIN_COMBINATIONS = [
   
   
   def full?(board)
-      board.all?{|spot| spot == "X" || spot == "O" }
+      board.all?{|elem| elem == "X" || elem == "O" }
   end
  
  
