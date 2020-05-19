@@ -32,7 +32,7 @@ def won?(board)
 
   end
   
-  false
+  nil
 end
 
 
@@ -58,9 +58,17 @@ end
 
 
 def winner(board)
-  if [board[won?(board)[0]],board[won?(board)[1]],board[won?(board)[2]]] == ["X", "X", "X"]
-    "X"
-  elsif [board[won?(board)[0]],board[won?(board)[1]],board[won?(board)[2]]] == ["O", "O", "O"]
-    "O"
+
+  if won?(board)
+    board[won?(board)[0]]
   end
+
+  # if [board[won?(board)[0]],board[won?(board)[1]],board[won?(board)[2]]] == ["X", "X", "X"]
+  #   return "X"
+  # elsif [board[won?(board)[0]],board[won?(board)[1]],board[won?(board)[2]]] == ["O", "O", "O"]
+  #   return "O"
+  # else
+  #   nil
+  # end
+  
 end 
