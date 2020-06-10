@@ -16,11 +16,11 @@ WIN_COMBINATIONS = [
 ]
 
 def won?(board)
-  WIN_COMBINATIONS.each do |win_com|
-    win_com_el = win_com.map {|idx| board[idx]}
-    return win_com if win_com_el.all?("X") || win_com_el.all?("O")
+  WIN_COMBINATIONS.detect do |arr|
+    board[arr[0]] == board[arr[1]] &&
+    board[arr[1]] == board[arr[2]] &&
+    position_taken?(board, arr[0])
   end
-  return false
 end
 
 def full?(board)
@@ -32,7 +32,7 @@ def draw?(board)
 end
 
 def over?(board)
-  won?(board) || full?(board) || draw?(board)
+  won?(board) || full?(board)
 end
 
 def winner(board)
