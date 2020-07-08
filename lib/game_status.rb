@@ -64,14 +64,15 @@ def over?(board)
 end
 
 def winner(board)
-  token = WIN_COMBINATIONS.find do |win_state|
+  token = nil
+  winner_combo = WIN_COMBINATIONS.find do |win_state|
     if board[win_state[0]] == "X" && board[win_state[1]] == "X" && board[win_state[2]] == "X" then
-      "X"
+      token = "X"
     elsif board[win_state[0]] == "O" && board[win_state[1]] == "O" && board[win_state[2]] == "O"
-      "O"
+      token = "O"
     else
       nil
     end
     end
-    if token then board[token[0]] else nil end
+    if winner_combo then token else nil end
 end
