@@ -15,7 +15,7 @@ WIN_COMBINATIONS = [
   [2,4,6]
 ]
 def won?(board)
-  WIN_COMBINATIONS.each do |winning_streak|
+  winning_output = WIN_COMBINATIONS.each do |winning_streak|
    win_X = winning_streak.all? do |position|
     character = board[position] 
     character == "X"
@@ -27,8 +27,8 @@ def won?(board)
    if win_X || win_O
     return winning_streak
    end
-   until win_X || win_O
-      return false
-   end
+  end
+  if winning_output == WIN_COMBINATIONS
+    return false
   end
 end
