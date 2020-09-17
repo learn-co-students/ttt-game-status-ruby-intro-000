@@ -60,13 +60,21 @@ def draw?(board)
 end
 
 def over?(board)
-  won?(board) || draw?(board) || full?(board)
+  if won?(board) || draw?(board) || full?(board)
     return true
   else
     false
   end
 end
 
-# def winner?(board)
-#
+def winner(board)
+  if won?(board)
+    return board[won?(board)[0]]
+  end
+end
+
+# def winner(board)
+#   if won?(board)
+#     return board[board[0]]
+#   end
 # end
