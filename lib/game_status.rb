@@ -33,3 +33,78 @@ def won?(board)
     position_taken?(board, combo[0])
   end
 end
+
+# def full?(board)
+#   board.all? do |index|
+#     index == "X" || index == "O"
+#   end
+# end
+
+def full?(board)
+  board.all? {|token| token == "X"|| token == "O"}
+end
+
+# def draw?(board)
+#   if !won?(board) && full?(board)
+#     true
+#   else
+#     !won?(board) && !full?(board)
+#   end
+# end
+
+def draw?(board)
+  full?(board) && !won?(board)
+end
+
+# def over?(board)
+#   if won?(board) && full?(board)
+#     true
+#   elsif won?(board) && !full?(board)
+#     true
+#   elsif draw?(board)
+#     true
+#   else
+#      false
+#   end
+# end
+
+# def over?(board)
+#   if (won?(board) && full?(board)) || (won?(board) && !full?(board)) || draw?(board)
+#     true
+#   else
+#      false
+#   end
+# end
+
+# def over?(board)
+#   (won?(board) && full?(board)) || (won?(board) && !full?(board)) || draw?(board)
+# end
+
+def over?(board)
+  won?(board) || full?(board)
+end
+
+# def winner(board)
+# winning_combo = won?(board)
+#   winning_token = board[winning_combo[0]]
+#   winning_token
+# end
+
+# def winner(board)
+# winning_combo = won?(board)
+#   winning_token = board[winning_combo.first]
+#   # winning_token
+# end
+
+# def winner(board)
+#   if won?(board)
+#     winning_combo = won?(board)
+#     board[winning_combo.first]
+#   end
+# end
+
+def winner(board)
+  if winning_combo = won?(board)
+    board[winning_combo.first]
+  end
+end
